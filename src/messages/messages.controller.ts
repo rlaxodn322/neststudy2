@@ -4,6 +4,8 @@ import {
   Controller,
   Get,
   Post,
+  Delete,
+  Param,
 } from '@nestjs/common';
 import { MessagesService } from './messages.service';
 import { Message } from './message.entity';
@@ -22,5 +24,10 @@ export class MessagesController {
       throw new BadRequestException('Content is required');
     }
     return this.messagesService.create(message);
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: number): Promise<void> {
+    await this.messagesService.delete(id);
   }
 }

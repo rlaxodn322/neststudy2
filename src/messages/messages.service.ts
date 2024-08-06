@@ -18,4 +18,7 @@ export class MessagesService {
     message.content = content;
     return this.messageRepository.save(message);
   }
+  async delete(id: number): Promise<void> {
+    await this.messageRepository.delete(id);
+  }
 }
