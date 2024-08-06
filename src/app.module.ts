@@ -3,7 +3,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MessagesModule } from './messages/messages.module';
-
+import { BoardsModule } from './boards/boards.module';
+import { Board } from '../src/boards/boards.entity';
+import { Message } from '../src/messages/message.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -13,10 +15,13 @@ import { MessagesModule } from './messages/messages.module';
       username: 'root',
       password: '00000000',
       database: 'test',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      //entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      entities: [Message, Board],
       synchronize: false,
     }),
+
     MessagesModule,
+    BoardsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
