@@ -1,15 +1,26 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Get,
+  Post,
+} from '@nestjs/common';
 import { MessagesService } from './messages.service';
-
+import { Message } from './message.entity';
 @Controller('messages')
 export class MessagesController {
   constructor(private readonly messagesService: MessagesService) {}
+
   @Get()
-  getAllMessages(): string[] {
-    return this.messagesService.getMessages();
+  async findAll(): Promise<Message[]> {
+    return this.messagesService.findAll();
   }
   @Post()
-  addMessage(@Body('message') message: string): string {
-    return this.messagesService.addMessage(message);
+  async create(@Body() body: { message: string }): Promise<Message> {
+    const { message } = body;
+    if (!message) {
+      throw new BadRequestException('Content is required');
+    }
+    return this.messagesService.create(message);
   }
 }
