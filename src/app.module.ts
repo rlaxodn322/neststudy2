@@ -6,6 +6,9 @@ import { MessagesModule } from './messages/messages.module';
 import { BoardsModule } from './boards/boards.module';
 import { Board } from '../src/boards/boards.entity';
 import { Message } from '../src/messages/message.entity';
+import { Community } from './community/commnity.entity';
+import { CommunityModule } from './community/community.module';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -16,10 +19,10 @@ import { Message } from '../src/messages/message.entity';
       password: '00000000',
       database: 'test',
       //entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      entities: [Message, Board],
+      entities: [Message, Board, Community],
       synchronize: false,
     }),
-
+    CommunityModule,
     MessagesModule,
     BoardsModule,
   ],

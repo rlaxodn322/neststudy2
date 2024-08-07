@@ -28,6 +28,8 @@ export class BoardsService {
     return this.boardsRepository.save(newPost);
   }
 
+  
+
   async update(id: number, post: Partial<Board>): Promise<Board> {
     const existingPost = await this.boardsRepository.findOneBy({ id });
     if (!existingPost) {
