@@ -2,6 +2,7 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
+  
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -10,6 +11,7 @@ import {
 export class Community {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column()
   title: string;
   @Column()

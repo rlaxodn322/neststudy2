@@ -8,6 +8,7 @@ import { Board } from '../src/boards/boards.entity';
 import { Message } from '../src/messages/message.entity';
 import { Community } from './community/commnity.entity';
 import { CommunityModule } from './community/community.module';
+import { ApiModule } from './api/api.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { CommunityModule } from './community/community.module';
     CommunityModule,
     MessagesModule,
     BoardsModule,
+    ApiModule,
   ],
   controllers: [AppController],
   providers: [AppService],
