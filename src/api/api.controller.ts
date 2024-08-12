@@ -11,16 +11,18 @@ export class ApiController {
     @Query('pSize') pSize: number = 1000,
     @Query('type') type: string = 'json',
   ) {
-    console.log(this.apiService.getData(pIndex, pSize, type));
     return this.apiService.getData(pIndex, pSize, type);
   }
   @Get('data1')
+  
   getDat1a(
     @Query('pIndex') pIndex: number = 1,
+
     @Query('pSize') pSize: number = 1000,
     @Query('type') type: string = 'json',
   ) {
-    console.log(this.apiService.getData(pIndex, pSize, type));
+;
+
     return this.apiService.getData(pIndex, pSize, type);
   }
 

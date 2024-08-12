@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 @Injectable()
 export class ApiService {
-  private readonly apiKey: string = 'b4c34b46528844819545b920f7f392cd';
-  private readonly baseUrl: string = 'https://openapi.gg.go.kr/Publtolt';
+  private readonly apiKey: string = process.env.API_KEY || 'default_api_key';
+  private readonly baseUrl: string = process.env.BASE_URL || 'default_base_url';
 
   constructor(private readonly httpService: HttpService) {}
 
