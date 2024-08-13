@@ -18,7 +18,7 @@ export class CommunityService {
     const newPost = this.communityRepository.create(post);
     return this.communityRepository.save(newPost);
   }
-  
+
   async delete(id: number): Promise<void> {
     const result = await this.communityRepository.delete(id);
     if (result.affected === 0) {

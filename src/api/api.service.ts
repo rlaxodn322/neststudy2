@@ -6,6 +6,9 @@ import { map } from 'rxjs/operators';
 export class ApiService {
   private readonly apiKey: string = process.env.API_KEY || 'default_api_key';
   private readonly baseUrl: string = process.env.BASE_URL || 'default_base_url';
+  private readonly toilet: string =
+    process.env.ToiletApi || 'defulat_toiletApi';
+  private readonly ADST: string = process.env.ADSTApi || 'default_adstApi';
 
   constructor(private readonly httpService: HttpService) {}
 
@@ -14,15 +17,24 @@ export class ApiService {
     pSize: number = 1000,
     type: string = 'json',
   ): Observable<any> {
-    const url = `${this.baseUrl}?KEY=${this.apiKey}&Type=${type}&pIndex=${pIndex}&pSize=${pSize}`;
+    const url = `${this.baseUrl}/${this.toilet}?KEY=${this.apiKey}&Type=${type}&pIndex=${pIndex}&pSize=${pSize}`;
     return this.httpService.get(url).pipe(map((response) => response.data));
   }
-  getData1(
+  // getData1(
+  //   pIndex: number = 1,
+  //   pSize: number = 1000,
+  //   type: string = 'json',
+  // ): Observable<any> {
+  //   const url = `${this.baseUrl}?KEY=${this.apiKey}&Type=${type}&pIndex=${pIndex}&pSize=${pSize}`;
+  //   return this.httpService.get(url).pipe(map((response) => response.data));
+  // }
+
+  getADST(
     pIndex: number = 1,
     pSize: number = 1000,
     type: string = 'json',
   ): Observable<any> {
-    const url = `${this.baseUrl}?KEY=${this.apiKey}&Type=${type}&pIndex=${pIndex}&pSize=${pSize}`;
+    const url = `${this.baseUrl}/${this.ADST}?KEY=${this.apiKey}&Type=${type}&pIndex=${pIndex}&pSize=${pSize}`;
     return this.httpService.get(url).pipe(map((response) => response.data));
   }
 }
