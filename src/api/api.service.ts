@@ -12,6 +12,7 @@ export class ApiService {
 
   constructor(private readonly httpService: HttpService) {}
 
+  
   getData(
     pIndex: number = 2,
     pSize: number = 1000,
@@ -20,14 +21,7 @@ export class ApiService {
     const url = `${this.baseUrl}/${this.toilet}?KEY=${this.apiKey}&Type=${type}&pIndex=${pIndex}&pSize=${pSize}`;
     return this.httpService.get(url).pipe(map((response) => response.data));
   }
-  // getData1(
-  //   pIndex: number = 1,
-  //   pSize: number = 1000,
-  //   type: string = 'json',
-  // ): Observable<any> {
-  //   const url = `${this.baseUrl}?KEY=${this.apiKey}&Type=${type}&pIndex=${pIndex}&pSize=${pSize}`;
-  //   return this.httpService.get(url).pipe(map((response) => response.data));
-  // }
+
 
   getADST(
     pIndex: number = 1,

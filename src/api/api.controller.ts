@@ -14,8 +14,11 @@ export class ApiController {
     return this.apiService.getData(pIndex, pSize, type);
   }
   @Get('data1')
+  
   getData1(
     @Query('pIndex') pIndex: number = 1,
+
+    
 
     @Query('pSize') pSize: number = 1000,
     @Query('type') type: string = 'json',
@@ -27,7 +30,9 @@ export class ApiController {
     @Query('pIndex') pIndex: number = 1,
     @Query('pSize') pSize: number = 1000,
     @Query('type') type: string = 'json',
+
   ) {
     return this.apiService.getADST(pIndex, pSize, type);
   }
 }
+
