@@ -21,7 +21,7 @@ export class MessagesController {
   async create(@Body() body: { message: string }): Promise<Message> {
     const { message } = body;
     if (!message) {
-      throw new BadRequestException('Content is required');
+      throw new BadRequestException('Content is required message');
     }
     return this.messagesService.create(message);
   }
